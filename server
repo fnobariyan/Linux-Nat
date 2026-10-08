@@ -1,0 +1,5 @@
+echo "net.ipv4.ip_forward =1" >> /etc/sysctl.conf
+ sysctl -p
+net.ipv4.ip_forward = 1
+iptables -A POSTROUTING -t nat -s 192.168.56.0/24 -o enp0s8 -j MASQUERADE
+
