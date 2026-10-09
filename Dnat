@@ -1,3 +1,4 @@
-iptables -t nat -A PREROUTING -p tcp --dport 2222 -j DNAT --to-destination 192.168.83.130:22root@
-iptables -A FORWARD -p tcp -d 192.168.83.130 --dport 22 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
-netfilter-persistent save 
+iptables -t nat -A PREROUTING -p tcp --dport 2222 -j DNAT --to-destination 192.168.55.132:22
+iptables -A FORWARD -p tcp -d 192.168.55.132 --dport 22 -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+iptables -A POSTROUTING -t nat -o enp0s8 -j MASQUERADE
+
